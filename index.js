@@ -32,16 +32,28 @@ function checkForNumber(password){
     }
     return false
 }
+//check for specialcharacter//
+function checkSpecialCharacter(password) {
+var iChars = "~`!#$%^&*+=-[]\\\';,/{}|\":<>?";
+    for (var i = 0; i < password.length; i++) {
+        if (iChars.indexOf(password.charAt(i)) != -1){
+        return true
+        }
+        }
+    return false
+}
 function validatePassword(password) {
 let lowerCase = false
 let passwordLength = false
 let upperCase = false
 let checkNumber = false
+let checkCharacter = false
     passwordLength = checkForLength(password)
     lowerCase = checkForLowerCase(password)
     upperCase = checkForUpperCase(password)
     checkNumber = checkForNumber(password)
+    checkCharacter = checkSpecialCharacter(password)
     
-    return lowerCase && passwordLength && upperCase && checkNumber
+    return lowerCase && passwordLength && upperCase && checkNumber && checkCharacter
 }
 module.exports = validatePassword
