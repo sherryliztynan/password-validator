@@ -23,13 +23,25 @@ function checkForUpperCase(password){
     }
     return false
 }
+//check for numeric value//
+function checkForNumber(password){
+    for (var i = 0; i < password.length; i++){
+        if (!isNaN(password[i])){
+            return true
+    }
+    }
+    return false
+}
 function validatePassword(password) {
 let lowerCase = false
 let passwordLength = false
 let upperCase = false
+let checkNumber = false
     passwordLength = checkForLength(password)
     lowerCase = checkForLowerCase(password)
     upperCase = checkForUpperCase(password)
-    return lowerCase && passwordLength && upperCase
+    checkNumber = checkForNumber(password)
+    
+    return lowerCase && passwordLength && upperCase && checkNumber
 }
 module.exports = validatePassword
